@@ -1,17 +1,21 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// App.jsx
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import TFGame from "./pages/TFGame";
-import Flashcard from "./pages/Flashcard";
+import CategorySelect from "./pages/CategorySelect";
+import Flash from "./pages/Flashcard";
+import TF from "./pages/TFGame";
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/tf" element={<TFGame />} />
-        <Route path="/flash" element={<Flashcard />} />
+        <Route path="/category" element={<CategorySelect />} />
+        <Route path="/select-category/:gameType" element={<CategorySelect />} />
+        <Route path="/flash/:categoryId" element={<Flash />} />
+        <Route path="/tf/:categoryId" element={<TF />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 
