@@ -10,9 +10,9 @@ app.use(express.json());
 
 
 //一問一答用
-app.get('/api/flashcard', async (req, res) => {
+app.get('/api/flashcard/random', async (req, res) => {
     try {
-        const result = await pool.query('SELECT * FROM flashcards ORDER BY RANDOM() LIMIT 1');
+        const result = await pool.query('SELECT * FROM qa_questions ORDER BY RANDOM() LIMIT 1');
         res.json(result.rows[0]);
     } catch (err) {
         console.error(err);

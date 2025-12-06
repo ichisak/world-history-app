@@ -112,7 +112,7 @@ function Home() {
                 cursor: "pointer",
             }}
             >
-                <h2 style={{ margin: 0 }}>一問一答(準備中)</h2>
+                <h2 style={{ margin: 0 }}>一問一答</h2>
             </div>
         </Link>   
 
