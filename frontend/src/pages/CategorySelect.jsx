@@ -22,8 +22,8 @@ export default function CategorySelect() {
       case "tf":
         navigate(`/tf/${categoryId}`);
         break;
-      case "sort":
-        navigate(`/sort/${categoryId}`);
+      case "chronology":
+        navigate(`/chronology/${categoryId}`);
         break;
       case "map":
         navigate(`/map/${categoryId}`);

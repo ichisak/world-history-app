@@ -137,6 +137,46 @@ app.get('/api/tf-questions/search', async (req, res) => {
   }
 });
 
+// 並び替え（カテゴリ指定・ランダム順）
+app.get('/api/chronology/:categoryId', async (req, res) => {
+  const { categoryId } = req.params;
+
+  try {
+    // STEP 1: 該当カテゴリの question_id をランダムに1つ選ぶ
+    const questionIdResult = await pool.query(
+      `
+      SELECT question_id
+      FROM chronology_questions
+      WHERE category_id = $1
+      GROUP BY question_id
+      ORDER BY RANDOM()
+      LIMIT 1
+      `,
+      [categoryId]
+    );
+
+    if (questionIdResult.rows.length === 0) {
+      return res.status(404).json({ message: "そのカテゴリの問題がありません" });
+    }
+
+    const questionId = questionIdResult.rows[0].question_id;
+
+    // STEP 2: その question_id の問題セットを取得
+    const eventsResult = await pool.query(
+      `
+      SELECT question_id, event_id, text, explanation, year, month, show_year
+      FROM chronology_questions
+      WHERE question_id = $1
+      `,
+      [questionId]
+    );
+
+    res.json(eventsResult.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "サーバーエラー" });
+  }
+});
 
 
 

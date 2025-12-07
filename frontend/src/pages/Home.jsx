@@ -23,7 +23,7 @@ function Home() {
         </Link>   
 
         {/* 並び替えカード */}
-        <Link to="/select-category/sort" style={{ textDecoration: "none", color: "inherit" }}>
+        <Link to="/select-category/chronology" style={{ textDecoration: "none", color: "inherit" }}>
           <div style={cardStyle}>
             <h2 style={{ margin: 0 }}>並び替え(準備中)</h2>
           </div>

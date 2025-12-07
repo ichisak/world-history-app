@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import CategorySelect from "./pages/CategorySelect";
 import Flash from "./pages/Flashcard";
 import TF from "./pages/TFGame";
+import Chronology from "./pages/Chronology";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/select-category/:gameType" element={<CategorySelect />} />
         <Route path="/flash/:categoryId" element={<Flash />} />
         <Route path="/tf/:categoryId" element={<TF />} />
+        <Route path="/chronology/:categoryId" element={<Chronology />} />
       </Routes>
     </BrowserRouter>
   );
